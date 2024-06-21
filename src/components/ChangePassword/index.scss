@@ -1,0 +1,77 @@
+@use '~styles/colors.scss' as colors;
+@use '~styles/fonts.scss' as fonts;
+@use '~styles/breakpoints.scss' as breakpoints;
+
+.change-password-container {
+  font-family: fonts.$primaryFont;
+  background-color: rgb(255, 255, 255);
+
+  &__title {
+    color: colors.$gray600;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  &__change-password-form {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    gap: 2rem;
+
+    .input-text-container {
+      &__input {
+        background-size: auto 40%;
+
+        &.input-error {
+          color: rgb(255, 255, 255);
+        }
+      }
+    }
+
+    .button {
+      margin-top: 3rem;
+    }
+
+    .error-message {
+      display: none;
+
+      color: colors.$error100;
+
+      &.show-error {
+        display: block;
+      }
+    }
+  }
+
+  &__password-tips {
+    font-weight: 100;
+    color: colors.$gray500;
+    line-height: 24px;
+  }
+
+  &__error-message {
+    display: block;
+
+    color: colors.$error100;
+
+    margin-top: 0.8rem;
+
+    user-select: all;
+  }
+
+  &__separator {
+    display: flex;
+
+    .divisor {
+      width: 100%;
+
+      border: unset;
+      border-top: 0.1rem solid colors.$gray200;
+    }
+
+    .separator-text {
+      margin: 0 2.8rem;
+    }
+  }
+}
