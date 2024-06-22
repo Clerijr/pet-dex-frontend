@@ -4,20 +4,22 @@
 
 .change-password-container {
   font-family: fonts.$primaryFont;
+  line-height: fonts.$headerLineHeight;
+
   background-color: rgb(255, 255, 255);
 
   &__title {
     color: colors.$gray600;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 24px;
+    font-size: 1.8rem;
+    font-weight: fonts.$headerFontWeight;
   }
 
   &__change-password-form {
     display: flex;
-    justify-content: start;
     flex-direction: column;
     gap: 2rem;
+
+    justify-content: start;
 
     .input-text-container {
       &__input {
@@ -45,9 +47,11 @@
   }
 
   &__password-tips {
-    font-weight: 100;
     color: colors.$gray500;
-    line-height: 24px;
+    font-weight: fonts.$footerFontWeight;
+
+    list-style-type: disc;
+    padding-inline-start: 2rem;
   }
 
   &__error-message {

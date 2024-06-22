@@ -34,9 +34,9 @@ const html = `
           <span data-select="confirm-password-error-message" class="error-message"></span>
           
           <ul class="change-password-container__password-tips">
-            <li>• Insira no mínimo 6 caracteres</li>
-            <li>• A senha deve conter uma letra maiúscula</li>
-            <li>• Deve conter um caractere especial</li>
+            <li>Insira no mínimo 6 caracteres</li>
+            <li>A senha deve conter uma letra maiúscula</li>
+            <li>Deve conter um caractere especial</li>
           </ul>
           </form>
       </div>
@@ -141,6 +141,17 @@ export default function ChangePassword() {
       $confirmPasswordErrorMessage.innerText = 'Senha inválida';
       confirmPasswordInput.inputError();
     }
+    if (!this.comparePasswords(newPassword, confirmPassword)) {
+      validNewPassword = false;
+      validConfirmPassword = false;
+      $newPasswordErrorMessage.classList.add('show-error');
+      $confirmPasswordErrorMessage.classList.add('show-error');
+      $newPasswordErrorMessage.innerText = 'As senhas informadas não coincidem';
+      $confirmPasswordErrorMessage.innerText =
+        'As senhas informadas não coincidem';
+      newPasswordInput.inputError();
+      confirmPasswordInput.inputError();
+    }
 
     if (validPassword) $passwordErrorMessage.classList.remove('show-error');
     if (validNewPassword)
@@ -159,6 +170,9 @@ ChangePassword.prototype = Object.assign(
   {
     changePassword() {
       this.emit('change-password');
+    },
+    comparePasswords(password, newPassword) {
+      return password === newPassword;
     },
     validatePassword(password) {
       const hasMinLength = password.length >= 10;
